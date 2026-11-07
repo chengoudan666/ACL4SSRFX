@@ -9,36 +9,6 @@
 ;增强中国IP段：不支持
 ;增强国外GFW：不支持
 
-;================ 国旗 Emoji 设置 ================
-; 开启自动添加国旗并在最前面显示
-add_emoji=true
-remove_old_emoji=true
-
-; 常见国家与地区国旗映射规则
-emoji=(港|HK|Hong Kong|HongKong|🇭🇰),🇭🇰
-emoji=(台|TW|Taiwan|Republic of China|🇹🇼),🇹🇼
-emoji=(日|JP|Japan|东京|大阪|🇯🇵),🇯🇵
-emoji=(美|US|USA|United States|洛杉矶|硅谷|西雅图|🇺🇸),🇺🇸
-emoji=(坡|SG|Singapore|新加坡|狮城|🇸🇬),🇸🇬
-emoji=(韩|KR|Korea|首尔|春川|🇰🇷),🇰🇷
-emoji=(英|UK|GB|Great Britain|United Kingdom|伦敦|🇬🇧),🇬🇧
-emoji=(德|DE|Germany|法兰克福|🇩🇪),🇩🇪
-emoji=(法|FR|France|巴黎|🇫🇷),🇫🇷
-emoji=(澳|AU|Australia|悉尼|墨尔本|🇦🇺),🇦🇺
-emoji=(加|CA|Canada|温哥华|多伦多|🇨🇦),🇨🇦
-emoji=(俄|RU|Russia|莫斯科|🇷🇺),🇷🇺
-emoji=(印尼|ID|Indonesia|🇮🇩),🇮🇩
-emoji=(印度|IN|India|孟买|🇮🇳),🇮🇳
-emoji=(泰|TH|Thailand|曼谷|🇹🇭),🇹🇭
-emoji=(越|VN|Vietnam|胡志明|🇻🇳),🇻🇳
-emoji=(马|MY|Malaysia|马来西亚|🇲🇾),🇲🇾
-emoji=(菲|PH|Philippines|菲律宾|🇵🇭),🇵🇭
-emoji=(土|TR|Turkey|土耳其|伊斯坦布尔|🇹🇷),🇹🇷
-emoji=(阿根廷|AR|Argentina|🇦🇷),🇦🇷
-emoji=(巴西|BR|Brazil|🇧🇷),🇧🇷
-emoji=(流量|时间|到期|官网|群|重置|剩),🏳️‍🌈
-;================================================
-
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list
 ruleset=🛑 全球拦截,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
@@ -90,9 +60,9 @@ rename=[ ]{2,}@
 ; rename=免费@
 ; rename=限时@
 
-; 最后统一给所有节点名前加 狗蛋 前缀
+; 最后统一给所有节点名前加 🐲狗蛋 前缀
 ; （放在最后，保证删字/清理完成后前缀仍完整留在名字最前面）
-rename=^@狗蛋
+rename=^@🐲狗蛋
 ;============================================================
 
 custom_proxy_group=🚀 节点选择`select`[]♻️ 自动选择`[]DIRECT`.*
