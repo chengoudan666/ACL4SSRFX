@@ -65,6 +65,47 @@ rename=[ ]{2,}@
 rename=^@🐲狗蛋
 ;============================================================
 
+;################## 国旗自动识别（多国家） ##################
+; 每行格式：emoji=正则,国旗
+; 转换器按从上到下顺序匹配节点名，命中第一条就停止，并把国旗插到名字最前面
+; （插在 🐲狗蛋 前缀之前）。节点名里只要有国家名/英文名/城市名/机场两位代码，
+; 就会自动显示对应国旗，支持多国家。
+;
+; 只保留香港、台湾、澳门、韩国、新加坡、马来西亚、泰国、越南、菲律宾、印度、
+; 土耳其、英国、德国、法国、荷兰、俄罗斯、美国、加拿大、日本 这 19 个常用地区。
+; 想加国家，照格式加一行即可，例如：
+;   emoji=(?i:澳大利亚|澳洲|悉尼|Australia|Sydney|\bAU\d*\b),🇦🇺
+; 三个注意点：
+;   1) 正则里不能出现英文逗号（逗号是「正则」与「国旗」的分隔符）；
+;   2) 注释单独写一行（以 ; 开头），不要写在 emoji= 行尾；
+;   3) 本文件只要出现 emoji= 行，就会【整表替换】转换器自带的国旗表，不是追加。
+;################################################################
+
+; 日本、美国放最前面：
+; ①「香港中转日本」这类名字按落地国（日本）显示国旗；
+; ② US-CA / US-DE / US-IN 这类带州码的名字不会被误判成加拿大/德国/印度。
+emoji=(?i:日本|东京|大阪|埼玉|川日|泉日|沪日|深日|Japan|Tokyo|Osaka|\bJP\d*\b),🇯🇵
+emoji=(?i:美国|United\s?States|America|硅谷|洛杉矶|圣何塞|西雅图|达拉斯|凤凰城|波特兰|俄勒冈|拉斯维加斯|芝加哥|圣克拉拉|费利蒙|纽约|迈阿密|华盛顿|\bUS\d*\b),🇺🇸
+
+emoji=(?i:香港|Hong\s?Kong|HongKong|深港|沪港|京港|\bHKG\d*\b|\bHK\d*\b|[^-]港),🇭🇰
+emoji=(?i:台湾|台灣|台北|新北|彰化|台中|高雄|桃园|新竹|Taiwan|\bTWN\d*\b|\bTW\d*\b),🇹🇼
+emoji=(?i:澳门|Macao|Macau|CTM|^澳),🇲🇴
+emoji=(?i:韩国|首尔|Korea|Seoul|\bKR\d*\b),🇰🇷
+emoji=(?i:新加坡|狮城|Singapore|\bSG\d*\b),🇸🇬
+emoji=(?i:马来西亚|吉隆坡|Malaysia|Kuala\s?Lumpur|\bMY\d*\b),🇲🇾
+emoji=(?i:泰国|曼谷|Thailand|Bangkok|\bTH\d*\b),🇹🇭
+emoji=(?i:越南|Vietnam|\bVN\d*\b),🇻🇳
+emoji=(?i:菲律宾|马尼拉|Philippines|Manila|\bPH\d*\b),🇵🇭
+emoji=(?i:印度|孟买|India|Mumbai|\bIN\d*\b),🇮🇳
+emoji=(?i:土耳其|伊斯坦布尔|Turkey|Istanbul|\bTR\d*\b),🇹🇷
+emoji=(?i:英国|伦敦|England|Britain|United\s?Kingdom|London|\bUK\d*\b|\bGB\d*\b),🇬🇧
+emoji=(?i:德国|法兰克福|Germany|Frankfurt|\bDE\d*\b),🇩🇪
+emoji=(?i:法国|巴黎|France|Paris|\bFR\d*\b),🇫🇷
+emoji=(?i:荷兰|阿姆斯特丹|Netherlands|Amsterdam|\bNL\d*\b),🇳🇱
+emoji=(?i:俄罗斯|莫斯科|圣彼得堡|伯力|西伯利亚|Russia|Moscow|\bRU\d*\b),🇷🇺
+emoji=(?i:加拿大|枫叶|温哥华|多伦多|蒙特利尔|Canada|Vancouver|Toronto|Montreal|\bCA\d*\b),🇨🇦
+;============================================================
+
 custom_proxy_group=🚀 节点选择`select`[]♻️ 自动选择`[]DIRECT`.*
 custom_proxy_group=♻️ 自动选择`url-test`.*`http://www.gstatic.com/generate_204`300,,50
 custom_proxy_group=🌍 国外媒体`select`[]🚀 节点选择`[]♻️ 自动选择`[]🎯 全球直连`.*
@@ -76,6 +117,11 @@ custom_proxy_group=🎯 全球直连`select`[]DIRECT`[]🚀 节点选择`[]♻�
 custom_proxy_group=🛑 全球拦截`select`[]REJECT`[]DIRECT
 custom_proxy_group=🍃 应用净化`select`[]REJECT`[]DIRECT
 custom_proxy_group=🐟 漏网之鱼`select`[]🚀 节点选择`[]🎯 全球直连`[]♻️ 自动选择`.*
+
+; 打开国旗显示（转换器默认是关的，不写这两行就不会有国旗）
+; remove_old_emoji 会先去掉节点名里原有的旗帜，避免出现两个国旗
+add_emoji=true
+remove_old_emoji=true
 
 enable_rule_generator=true
 overwrite_original_rules=true
